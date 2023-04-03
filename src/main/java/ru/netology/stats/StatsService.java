@@ -7,18 +7,15 @@ public class StatsService {
         for (int i = 0; i < sales.length; i++) {
             sumSales = sumSales + sales[i];
         }
-        System.out.println("Сумма всех продаж: " + sumSales);
+//      System.out.println("Сумма всех продаж: " + sumSales);
         return sumSales;
     }
 
     public int getMeanSales(int[] sales) {
-        int sumSales = 0;
+        int sumSales = getSumSales(sales);
         int meanSales = 0;
-        for (int i = 0; i < sales.length; i++) {
-            sumSales = sumSales + sales[i];
-            meanSales = sumSales / sales.length;
-        }
-        System.out.println("Средняя сумма продаж в месяц: " + meanSales);
+        meanSales = sumSales / sales.length;
+//        System.out.println("Средняя сумма продаж в месяц: " + meanSales);
         return meanSales;
     }
 
@@ -30,7 +27,7 @@ public class StatsService {
             }
         }
         minSales = minSales + 1;
-        System.out.println("Номер (первого) месяца, в котором был минимум продаж: " + minSales);
+//        System.out.println("Номер (первого) месяца, в котором был минимум продаж: " + minSales);
         return minSales;
     }
 
@@ -42,79 +39,59 @@ public class StatsService {
             }
         }
         maxSales = maxSales + 1;
-        System.out.println("Номер (первого) месяца, в котором был максимум продаж: " + maxSales);
+//        System.out.println("Номер (первого) месяца, в котором был максимум продаж: " + maxSales);
         return (maxSales);
     }
 
     public int getLastMonthLessMeanSales(int[] sales) {
-        int sumSales = 0;
-        int meanSales = 0;
+        int meanSales = getMeanSales(sales);
         int count = 0;
-        for (int i = 0; i < sales.length; i++) {
-            sumSales = sumSales + sales[i];
-            meanSales = sumSales / sales.length;
-        }
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] < meanSales) {
                 count++;
             }
         }
-        System.out.println("Количество месяцев, в которых продажи были ниже среднего: " + count);
+//        System.out.println("Количество месяцев, в которых продажи были ниже среднего: " + count);
         return count;
-
     }
 
     public int getLastNumberMonthLessMeanSales(int[] sales) {
-        int sumSales = 0;
-        int meanSales = 0;
+        int meanSales = getMeanSales(sales);
         int minSales = 0;
-        for (int i = 0; i < sales.length; i++) {
-            sumSales = sumSales + sales[i];
-            meanSales = sumSales / sales.length;
-        }
-
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] < meanSales) {
                 minSales = i;
             }
         }
         minSales = minSales + 1;
-        System.out.println("Последний месяц, в котором продажи были ниже среднего: " + minSales);
+//        System.out.println("Последний месяц, в котором продажи были ниже среднего: " + minSales);
         return minSales;
     }
 
     public int getLastMonthMoreMeanSales(int[] sales) {
-        int sumSales = 0;
-        int meanSales = 0;
+        //int sumSales = 0;
+        int meanSales = getMeanSales(sales);
         int count = 0;
-        for (int i = 0; i < sales.length; i++) {
-            sumSales = sumSales + sales[i];
-            meanSales = sumSales / sales.length;
-        }
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] > meanSales) {
                 count++;
             }
         }
-        System.out.println("Количество месяцев, в которых продажи были выше среднего: " + count);
+//        System.out.println("Количество месяцев, в которых продажи были выше среднего: " + count);
         return count;
     }
 
     public int getLastNumberMonthMoreMeanSales(int[] sales) {
-        int sumSales = 0;
-        int meanSales = 0;
+        //int sumSales = 0;
+        int meanSales = getMeanSales(sales);
         int maxSales = 0;
-        for (int i = 0; i < sales.length; i++) {
-            sumSales = sumSales + sales[i];
-            meanSales = sumSales / sales.length;
-        }
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] > meanSales) {
                 maxSales = i;
             }
         }
         maxSales = maxSales + 1;
-        System.out.println("Последний месяц, в котором продажи были выше среднего: " + maxSales);
+//        System.out.println("Последний месяц, в котором продажи были выше среднего: " + maxSales);
         return maxSales;
     }
 
